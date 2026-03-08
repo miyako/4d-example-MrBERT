@@ -1,0 +1,4 @@
+MrBERT/Data/*
+MrBERT/Project/DerivedData/formAttributes.json
+MrBERT/Project/DerivedData/methodAttributes.json
+MrBERT/userPreferences.*
