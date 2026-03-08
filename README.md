@@ -40,7 +40,7 @@ $cosineSimilarity4:=$es1.cosineSimilarity($es2)
 ##### Cosine similarity from example code above:
 
 ||ONNX Runtime `Int8`|ONNX Runtime `F32`|
-|-||:-|:-|
+|-|:-|:-|
 |FR|`0.730140539973`|`0.7457102227547`
 |DE|`0.5258991301459`|`0.4862183782585`
 |IT|`0.6307831430023`|`0.6928446810653`
