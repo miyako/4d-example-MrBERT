@@ -32,11 +32,18 @@ $es1:=$batch.embeddings[6].embedding
 $es2:=$batch.embeddings[7].embedding
 
 $cosineSimilarity1:=$fr1.cosineSimilarity($fr2)
-//0.730140539973
 $cosineSimilarity2:=$de1.cosineSimilarity($de2)
-//0.5258991301459
 $cosineSimilarity3:=$it1.cosineSimilarity($it2)
-//0.6307831430023
 $cosineSimilarity4:=$es1.cosineSimilarity($es2)
-//0.6245719836308
 ```
+
+##### Cosine similarity from example code above:
+
+||llama.cpp `Q8_0`|ONNX Runtime `Int8`|ONNX Runtime `F32`|
+|-|:-|:-|:-|
+|FR||`0.730140539973`|`0.7457102227547`
+|DE||`0.5258991301459`|`0.4862183782585`
+|IT||`0.6307831430023`|`0.6928446810653`
+|ES||`0.6245719836308`|`0.6910814999346`
+
+
