@@ -1,2 +1,48 @@
-# 4d-example-MrBERT
-MrBERT for ONNX
+## [BSC-LT/MrBERT](https://huggingface.co/BSC-LT/MrBERT)
+
+```4d
+var $en; $fr : 4D.Vector
+var $AIClient : cs.AIKit.OpenAI
+var $cosineSimilarity : Real
+$AIClient:=cs.AIKit.OpenAI.new()
+
+$AIClient.baseURL:="http://127.0.0.1:8081/v1"  // onnx-genai
+
+$inputs:=[\
+"Il m'a posé un lapin hier soir."; \
+"Il n'est pas venu à notre rendez-vous."; \
+"Ich verstehe nur Bahnhof."; \
+"Das ist mir völlig unklar und verwirrend."; \
+"In bocca al lupo per il tuo esame!"; \
+"Ti auguro tanto successo per la prova."; \
+"Me estás tomando el pelo."; \
+"Creo que me estás engañando con una broma."\
+]
+
+$batch:=$AIClient.embeddings.create($inputs)
+
+$fr1:=$batch.embeddings[0].embedding
+$fr2:=$batch.embeddings[1].embedding
+$de1:=$batch.embeddings[2].embedding
+$de2:=$batch.embeddings[3].embedding
+$it1:=$batch.embeddings[4].embedding
+$it2:=$batch.embeddings[5].embedding
+$es1:=$batch.embeddings[6].embedding
+$es2:=$batch.embeddings[7].embedding
+
+$cosineSimilarity1:=$fr1.cosineSimilarity($fr2)
+$cosineSimilarity2:=$de1.cosineSimilarity($de2)
+$cosineSimilarity3:=$it1.cosineSimilarity($it2)
+$cosineSimilarity4:=$es1.cosineSimilarity($es2)
+```
+
+##### Cosine similarity from example code above:
+
+||llama.cpp `Q8_0`|ONNX Runtime `Int8`|ONNX Runtime `F32`|
+|-|:-|:-|:-|
+|🇫🇷|`0.9659285411128`|`0.730140539973`|`0.7457102227547`
+|🇩🇪|`0.9475005346797`|`0.5258991301459`|`0.4862183782585`
+|🇮🇹|`0.956164441754`|`0.6307831430023`|`0.6928446810653`
+|🇪🇸|`0.9749157215323`|`0.6245719836308`|`0.6910814999346`
+
+
