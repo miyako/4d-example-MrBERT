@@ -29,10 +29,10 @@ $es1:=$batch.embeddings[6].embedding
 $es2:=$batch.embeddings[7].embedding
 
 $cosineSimilarity1:=$fr1.cosineSimilarity($fr2)
-//0.730140539973
+//0.9321078348197
 $cosineSimilarity2:=$de1.cosineSimilarity($de2)
-//0.5258991301459
+//0.8511534832636
 $cosineSimilarity3:=$it1.cosineSimilarity($it2)
-//0.6307831430023
+//0.893623483347
 $cosineSimilarity4:=$es1.cosineSimilarity($es2)
-//0.6245719836308
+//0.9160351028315
